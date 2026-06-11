@@ -2,13 +2,12 @@ let words;
 let text = "blade";
 let word = text.toUpperCase();
 
-
 let row = 0;
 let col = 0;
 const game = document.getElementById("game_container");
 let gameOver = false;
 let win = false;
-
+//
 let green = "rgb(88, 129, 87)", yellow = "rgb(160, 127, 26)", gray = "rgb(73, 80, 87)";
 
 
