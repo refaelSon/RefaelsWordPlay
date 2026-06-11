@@ -1,7 +1,8 @@
-console.log(getRandomWord());
+// console.log(getRandomWord());
 
 
 
+let words;
 let text = "blade";
 let word = text.toUpperCase();
 
@@ -18,20 +19,45 @@ let green = "#588157", yellow = "#a07f1a", gray = "#495057";
 
 
 
+
+init();
+
+async function init() {
+    words = await getWordList();
+    word = await getRandomWord();
+    console.log("Random word:", word);
+
+}
+
+async function getWordList() {
+    const res = await fetch("words.txt");
+    const text = await res.text();
+    const words = text.split(/\r?\n/).filter(w => w.trim() !== "");
+
+
+    return words;
+
+
+}
+
+async function getRandomWord() {
+
+
+    const random = await words[Math.floor(Math.random() * words.length)];
+
+    return random.toUpperCase();
+}
+
+
+
+
+
+
+
 document.addEventListener("keydown", function (event) {
     getInput(event);
 
 });
-
-
-
-
-
-
-
-
-
-
 
 
 function getInput(e) {
@@ -96,14 +122,23 @@ function checkWord() {
         for (let i = 0; i < 5; i++) {
             const curent_box = game.children[row].children[i];
             temp += curent_box.value;
-            if (word.charAt(i) == curent_box.value)
+            let curent_btn = document.getElementById(curent_box.value);
+
+            if (word.charAt(i) == curent_box.value) {
                 curent_box.style.backgroundColor = green;
-            else if (word.includes(curent_box.value))
+                curent_btn.style.backgroundColor = green;
+            }
+            else if (word.includes(curent_box.value)) {
                 curent_box.style.backgroundColor = yellow;
-            else
+                curent_btn.style.backgroundColor = yellow;
+            }
+
+            else {
                 curent_box.style.backgroundColor = gray;
+                curent_btn.style.backgroundColor = gray;
 
 
+            }
         }
         row++;
         col = 0;
@@ -142,22 +177,10 @@ function isAlphabetic(str) {
 // const parent = document.querySelector(".myDiv");
 // const secondChild = parent.children[1]; // אינדקס מתחיל מ־0
 
-async function getRandomWord() {
-    const res = await fetch("words.txt");
-    const text = await res.text();
 
-    const words = text.split(/\r?\n/).filter(w => w.trim() !== "");
-    const random = words[Math.floor(Math.random() * words.length)];
 
-    return random.toUpperCase();
-}
 
-async function init() {
-    word = await getRandomWord();
-    console.log("Random word:", word);
-}
 
-init();
 
 
 
