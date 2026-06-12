@@ -1,6 +1,7 @@
 let words;
 let text = "blade";
 let word = text.toUpperCase();
+let history = [];
 
 let row = 0;
 let col = 0;
@@ -105,7 +106,7 @@ function step() {
 }
 function del() {
     if (col != 0) {
-        col = col - 1;
+        col--;
         let curent_box = game.children[row].children[col];
         curent_box.value = '';
     }
@@ -120,57 +121,62 @@ function checkWord() {
             temp += curent_box.value;
 
         }
-        console.log("word:", words.includes(temp.toLowerCase()));
-        if (words.includes(temp.toLowerCase())) {
 
-
-
-
-
-            for (let i = 0; i < 5; i++) {
-
-                const curent_box = game.children[row].children[i];
-                let curent_btn = document.getElementById(curent_box.value);
-                if (word.charAt(i) == curent_box.value) {
-                    curent_box.style.backgroundColor = green;
-                    curent_btn.style.backgroundColor = green;
-                }
-                else if (word.includes(curent_box.value)) {
-                    curent_box.style.backgroundColor = yellow;
-                    if (curent_btn.style.backgroundColor !== green) {
-
-
-                        curent_btn.style.backgroundColor = yellow;
-                    }
-                }
-
-                else {
-                    curent_box.style.backgroundColor = gray;
-                    curent_btn.style.backgroundColor = gray;
-                }
-
-
-
-
-
-            }
-            row++;
-            col = 0;
-
-
-
-            if (temp === word) {
-                console.log("win!!")
-                win = true;
-                gameOver = true;
-            }
-            else if (row == 6) {
-                console.log("lose :(")
-
-                gameOver = true;
-
-            }
+        console.log("word:", words.includes(temp.toLowerCase()), temp);
+        if (history.includes(temp)) {
+            console.log("alredy tryed");
+            return;
         }
+        else if (!words.includes(temp.toLowerCase())) {
+            return;
+        }
+
+
+
+        for (let i = 0; i < 5; i++) {
+
+            const curent_box = game.children[row].children[i];
+            let curent_btn = document.getElementById(curent_box.value);
+            if (word.charAt(i) == curent_box.value) {
+                curent_box.style.backgroundColor = green;
+                curent_btn.style.backgroundColor = green;
+            }
+            else if (word.includes(curent_box.value)) {
+                curent_box.style.backgroundColor = yellow;
+                if (curent_btn.style.backgroundColor !== green) {
+
+                    curent_btn.style.backgroundColor = yellow;
+                }
+            }
+
+            else {
+                curent_box.style.backgroundColor = gray;
+                curent_btn.style.backgroundColor = gray;
+            }
+
+
+
+
+
+        }
+        history[history.length] = temp;
+        row++;
+        col = 0;
+
+
+
+        if (temp === word) {
+            console.log("win!!")
+            win = true;
+            gameOver = true;
+        }
+        else if (row == 6) {
+            console.log("lose :(")
+
+            gameOver = true;
+
+        }
+
 
     }
 
