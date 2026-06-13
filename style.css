@@ -153,7 +153,7 @@ input {
     /* Set a default minimum width */
     margin-left: -75px;
     /* Divide value of min-width by 2 */
-    background-color: #fff;
+    background-color: #dfd9d9cd;
     /* Black background color */
     color: #333;
     /* White text color */
@@ -169,7 +169,7 @@ input {
     /* Add a z-index if needed */
     left: 50%;
     /* Center the snackbar */
-    top: 120px;
+    top: 60px;
     /* 30px from the bottom */
     font-size: 15px;
 }
@@ -182,4 +182,53 @@ input {
   However, delay the fade out process for 2.5 seconds */
     -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
     animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    transition: 3000ms;
+}
+
+@-webkit-keyframes fadein {
+    from {
+        top: 30px;
+        opacity: 0;
+    }
+
+    to {
+        top: 60px;
+        opacity: 1;
+    }
+}
+
+@keyframes fadein {
+    from {
+        top: 30px;
+        opacity: 0;
+    }
+
+    to {
+        top: 60px;
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes fadeout {
+    from {
+        top: 600px;
+        opacity: 1;
+    }
+
+    to {
+        top: 30px;
+        opacity: 0;
+    }
+}
+
+@keyframes fadeout {
+    from {
+        top: 60px;
+        opacity: 1;
+    }
+
+    to {
+        top: 30px;
+        opacity: 0;
+    }
 }

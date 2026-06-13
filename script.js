@@ -6,6 +6,7 @@ let history = [];
 let row = 0;
 let col = 0;
 const game = document.getElementById("game_container");
+var snackBar = document.getElementById("snackbar");
 let gameOver = false;
 let win = false;
 //
@@ -57,7 +58,7 @@ document.addEventListener("keydown", function (event) {
 
 
 function getInput(e) {
-    console.log("הוקלד:", e.key);
+    // console.log("הוקלד:", e.key);
     let key = e.key;
     if (gameOver)
         console.log("you cant play' game over");
@@ -122,12 +123,12 @@ function checkWord() {
 
         }
 
-        console.log("word:", words.includes(temp.toLowerCase()), temp);
         if (history.includes(temp)) {
-            console.log("alredy tryed");
+            msg('Have you already tried this!');
             return;
         }
         else if (!words.includes(temp.toLowerCase())) {
+            msg('The word is not in the word list');
             return;
         }
 
@@ -166,18 +167,23 @@ function checkWord() {
 
 
         if (temp === word) {
-            console.log("win!!")
+            snackBar.textContent = "You won!";
+            snackBar.className = "show";
             win = true;
             gameOver = true;
         }
         else if (row == 6) {
-            console.log("lose :(")
+            snackBar.textContent = "game over";
+            snackBar.className = "show";
 
             gameOver = true;
 
         }
 
 
+    }
+    else {
+        msg('The word is not long enough');
     }
 
 
@@ -194,15 +200,14 @@ function isAlphabetic(str) {
 }
 
 function msg(str) {
-    // Get the snackbar DIV
-    var x = document.getElementById("snackbar");
+
 
     // Add the "show" class to DIV
-    x.textContent = str;
-    x.className = "show";
+    snackBar.textContent = str;
+    snackBar.className = "show";
 
     // After 3 seconds, remove the show class from DIV
-    setTimeout(function () { x.className = x.className.replace("show", ""); }, 3000);
+    setTimeout(function () { snackBar.className = snackBar.className.replace("show", ""); }, 3000);
 }
 
 
