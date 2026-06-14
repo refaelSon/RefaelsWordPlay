@@ -13,10 +13,6 @@ let win = false;
 let green = "rgb(88, 129, 87)", yellow = "rgb(160, 127, 26)", gray = "rgb(73, 80, 87)";
 
 
-
-
-
-
 init();
 
 async function init() {
@@ -173,7 +169,7 @@ function checkWord() {
             gameOver = true;
         }
         else if (row == 6) {
-            snackBar.textContent = "game over";
+            snackBar.textContent = word;
             snackBar.className = "show";
 
             gameOver = true;
