@@ -124,7 +124,7 @@ function checkWord() {
         }
 
         if (history.includes(temp)) {
-            msg('Have you already tried this!');
+            msg(' You have already tried this!');
             return;
         }
         else if (!words.includes(temp.toLowerCase())) {
