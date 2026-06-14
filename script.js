@@ -13,12 +13,20 @@ let win = false;
 let green = "rgb(88, 129, 87)", yellow = "rgb(160, 127, 26)", gray = "rgb(73, 80, 87)";
 
 
+
 init();
+
 
 async function init() {
     words = await getWordList();
     word = await getRandomWord();
     console.log("Random word:", word);
+
+    fetch("winWindo.html")
+        .then(response => response.text())
+        .then(html => {
+            document.body.insertAdjacentHTML("beforeend", html);
+        });
 
 }
 
@@ -206,5 +214,12 @@ function msg(str) {
     setTimeout(function () { snackBar.className = snackBar.className.replace("show", ""); }, 3000);
 }
 
+function openModal() {
+    document.getElementById("overlay").style.display = "flex";
+}
+
+function closeModal() {
+    document.getElementById("overlay").style.display = "none";
+}
 
 
