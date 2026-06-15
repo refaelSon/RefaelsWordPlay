@@ -17,6 +17,9 @@ let green = "rgb(88, 129, 87)", yellow = "rgb(160, 127, 26)", gray = "rgb(73, 80
 init();
 
 
+
+
+
 async function init() {
     words = await getWordList();
     word = await getRandomWord();
@@ -27,6 +30,9 @@ async function init() {
         .then(html => {
             document.body.insertAdjacentHTML("beforeend", html);
         });
+
+
+
 
 }
 
@@ -51,10 +57,6 @@ async function getRandomWord() {
 
 
 
-
-
-
-
 document.addEventListener("keydown", function (event) {
     getInput(event);
 
@@ -73,6 +75,7 @@ function getInput(e) {
 
     else if (key === "Enter") {
         checkWord();
+
     }
 
     else if (col != 5 && isAlphabetic(key)) {
@@ -85,6 +88,8 @@ function getInput(e) {
             step();
         }
     }
+
+
 
 }
 
@@ -175,6 +180,7 @@ function checkWord() {
             snackBar.className = "show";
             win = true;
             gameOver = true;
+            openModal();
         }
         else if (row == 6) {
             snackBar.textContent = word;

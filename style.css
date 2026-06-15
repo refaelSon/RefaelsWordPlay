@@ -98,6 +98,10 @@ input {
 
 }
 
+.keyButon:hover {
+    scale: 1.05;
+}
+
 .bigKeyButon {
     width: 80px;
     height: 95%;
@@ -106,6 +110,12 @@ input {
     color: aliceblue;
     font-size: 30px;
     border-radius: 10%;
+
+}
+
+.bigKeyButon:hover {
+    scale: 1.05;
+
 
 }
 
