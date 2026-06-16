@@ -5,16 +5,29 @@ let history = [];
 
 let row = 0;
 let col = 0;
+let jibCount = 0;
 const game = document.getElementById("game_container");
-var snackBar = document.getElementById("snackbar");
-let gameOver = false;
-let win = false;
-//
-let green = "rgb(88, 129, 87)", yellow = "rgb(160, 127, 26)", gray = "rgb(73, 80, 87)";
+const snackBar = document.getElementById("snackbar");
 
 
 
 init();
+console.log(document.getElementById("score"));
+
+// const score;
+// const erors;
+
+
+
+let gameOver = false;
+let win = false;
+
+let green = "rgb(88, 129, 87)", yellow = "rgb(160, 127, 26)", gray = "rgb(73, 80, 87)";
+
+
+
+
+
 
 
 
@@ -25,12 +38,21 @@ async function init() {
     word = await getRandomWord();
     console.log("Random word:", word);
 
+
+
     fetch("winWindo.html")
-        .then(response => response.text())
+        .then(r => r.text())
         .then(html => {
             document.body.insertAdjacentHTML("beforeend", html);
-        });
 
+            // נותן לדפדפן זמן לעדכן את ה‑DOM
+            requestAnimationFrame(() => {
+                const score = document.getElementById("score");
+                const erors = document.getElementById("erors");
+
+                // console.log("FOUND:", score, erors);
+            });
+        });
 
 
 
@@ -138,6 +160,7 @@ function checkWord() {
         }
         else if (!words.includes(temp.toLowerCase())) {
             msg('The word is not in the word list');
+            jibCount++;
             return;
         }
 
@@ -176,17 +199,13 @@ function checkWord() {
 
 
         if (temp === word) {
-            snackBar.textContent = "You won!";
-            snackBar.className = "show";
-            win = true;
-            gameOver = true;
-            openModal();
+            winSequ();
         }
         else if (row == 6) {
             snackBar.textContent = word;
             snackBar.className = "show";
-
             gameOver = true;
+
 
         }
 
@@ -197,6 +216,27 @@ function checkWord() {
     }
 
 
+
+}
+
+function winSequ() {
+    snackBar.textContent = "You won!";
+    snackBar.className = "show";
+    win = true;
+    gameOver = true;
+    score.textContent = (row) + "/6";
+    erors.textContent = jibCount;
+
+
+
+
+
+
+
+
+
+
+    openModal();
 
 }
 

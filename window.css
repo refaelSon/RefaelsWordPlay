@@ -34,10 +34,6 @@ button {
     width: 50%;
     border-radius: 20%;
     border-style: solid;
-
-
-
-
 }
 
 #btnContainer {
@@ -55,14 +51,45 @@ button {
 
 }
 
-#scoarContainer {
+#scoreContainer {
 
     display: flex;
     align-items: center;
-    flex-direction: column;
+    flex-direction: row;
+    gap: 30px;
 
     width: 300px;
     height: 200px;
     color: black;
-    background-color: rgba(255, 212, 127, 0.314);
+    /* background-color: rgba(255, 212, 127, 0.314); */
+}
+
+h2 {
+    text-align: center;
+    margin: 0;
+    font-size: 100px;
+    padding: 0px;
+    size: 100%;
+}
+
+h4 {
+    text-align: center;
+    margin: 0;
+
+    font-size: 30px;
+    padding: 0px;
+    size: 100%;
+}
+
+.scoreElement {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    /* gap: 10px; */
+
+    height: 100%;
+    width: 50%;
+    /* background-color: rgb(19, 183, 49); */
+
 }
