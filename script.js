@@ -59,7 +59,7 @@ async function init() {
 }
 
 async function getWordList() {
-    const res = await fetch("words.txt");
+    const res = await fetch("wordlist_fives.txt");
     const text = await res.text();
     const words = text.split(/\r?\n/).filter(w => w.trim() !== "");
 
