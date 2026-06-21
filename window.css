@@ -21,7 +21,7 @@
     /* מכסה את כל המסך */
     /* background: rgba(0, 0, 0, 0.5); */
 
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
 

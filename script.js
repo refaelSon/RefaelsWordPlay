@@ -8,6 +8,7 @@ let col = 0;
 let jibCount = 0;
 const game = document.getElementById("game_container");
 const snackBar = document.getElementById("snackbar");
+let share = '';
 
 
 
@@ -173,28 +174,31 @@ function checkWord() {
             if (word.charAt(i) == curent_box.value) {
                 curent_box.style.backgroundColor = green;
                 curent_btn.style.backgroundColor = green;
+                share += '🟢';
             }
             else if (word.includes(curent_box.value)) {
                 curent_box.style.backgroundColor = yellow;
                 if (curent_btn.style.backgroundColor !== green) {
 
                     curent_btn.style.backgroundColor = yellow;
+
                 }
+                share += '🟡';
+
             }
 
             else {
                 curent_box.style.backgroundColor = gray;
                 curent_btn.style.backgroundColor = gray;
+                share += '⚫';
+
             }
-
-
-
-
 
         }
         history[history.length] = temp;
         row++;
         col = 0;
+        share += '\n';
 
 
 
@@ -205,6 +209,8 @@ function checkWord() {
             snackBar.textContent = word;
             snackBar.className = "show";
             gameOver = true;
+
+
 
 
         }
@@ -226,6 +232,12 @@ function winSequ() {
     gameOver = true;
     score.textContent = (row) + "/6";
     erors.textContent = jibCount;
+
+    const today = new Date().toLocaleDateString();
+    console.log(today);
+
+    share = "word play " + today + "\n" + share;
+    console.log(share);
 
 
 
@@ -266,6 +278,11 @@ function openModal() {
 
 function closeModal() {
     document.getElementById("overlay").style.display = "none";
+}
+function copyRes() {
+
+
+    navigator.clipboard.writeText(share);
 }
 
 
