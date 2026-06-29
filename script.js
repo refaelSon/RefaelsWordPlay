@@ -41,6 +41,12 @@ async function init() {
 
 
 
+
+
+
+
+
+
     fetch("winWindo.html")
         .then(r => r.text())
         .then(html => {
@@ -129,9 +135,6 @@ function presKey(key) {
 }
 
 
-
-
-
 function step() {
     if (col != 5)
         col++;
@@ -167,34 +170,93 @@ function checkWord() {
 
 
 
-        for (let i = 0; i < 5; i++) {
+        const counts = {};
+        for (let ch of word) {
+            counts[ch] = (counts[ch] || 0) + 1;
+        }
 
+        for (let ch in counts) {
+            console.log(ch, counts[ch]);
+        }
+
+
+        //בדיקת ירוקים
+        for (let i = 0; i < 5; i++) {
             const curent_box = game.children[row].children[i];
             let curent_btn = document.getElementById(curent_box.value);
             if (word.charAt(i) == curent_box.value) {
                 curent_box.style.backgroundColor = green;
                 curent_btn.style.backgroundColor = green;
+                counts[curent_box.value]--;
                 share += '🟢';
+
             }
-            else if (word.includes(curent_box.value)) {
+        }
+        //בדיקה שחורים צהובים
+        for (let i = 0; i < 5; i++) {
+            const curent_box = game.children[row].children[i];
+            let curent_btn = document.getElementById(curent_box.value);
+            if (curent_box.style.backgroundColor != green && word.includes(curent_box.value) && counts[curent_box.value] > 0) {
                 curent_box.style.backgroundColor = yellow;
                 if (curent_btn.style.backgroundColor !== green) {
 
                     curent_btn.style.backgroundColor = yellow;
 
                 }
+                counts[curent_box.value]--;
                 share += '🟡';
 
-            }
 
-            else {
+            }
+            else if (curent_box.style.backgroundColor != green) {
                 curent_box.style.backgroundColor = gray;
-                curent_btn.style.backgroundColor = gray;
+                if (curent_btn.style.backgroundColor !== green && curent_btn.style.backgroundColor !== yellow) {
+
+                    curent_btn.style.backgroundColor = gray;
+
+                }
                 share += '⚫';
 
             }
 
+
+
         }
+
+
+
+
+
+
+
+        // for (let i = 0; i < 5; i++) {
+
+        //     const curent_box = game.children[row].children[i];
+        //     let curent_btn = document.getElementById(curent_box.value);
+        //     if (word.charAt(i) == curent_box.value) {
+        //         curent_box.style.backgroundColor = green;
+        //         curent_btn.style.backgroundColor = green;
+        //         share += '🟢';
+        //     }
+        //     else if (word.includes(curent_box.value)) {
+        //         curent_box.style.backgroundColor = yellow;
+        //         if (curent_btn.style.backgroundColor !== green) {
+
+        //             curent_btn.style.backgroundColor = yellow;
+
+        //         }
+        //         share += '🟡';
+
+        //     }
+
+        //     else {
+        //         curent_box.style.backgroundColor = gray;
+        //         curent_btn.style.backgroundColor = gray;
+        //         share += '⚫';
+
+        //     }
+
+        // }
         history[history.length] = temp;
         row++;
         col = 0;
@@ -238,11 +300,6 @@ function winSequ() {
 
     share = "word play " + today + "\n" + share;
     console.log(share);
-
-
-
-
-
 
 
 
