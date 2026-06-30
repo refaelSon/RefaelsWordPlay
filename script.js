@@ -175,9 +175,9 @@ function checkWord() {
             counts[ch] = (counts[ch] || 0) + 1;
         }
 
-        for (let ch in counts) {
-            console.log(ch, counts[ch]);
-        }
+        // for (let ch in counts) {
+        //     console.log(ch, counts[ch]);
+        // }
 
 
         //בדיקת ירוקים
