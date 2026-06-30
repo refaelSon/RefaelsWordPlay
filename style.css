@@ -10,6 +10,8 @@ body {
 h1 {
     /*   */
     color: white;
+    user-select: none;
+
 }
 
 #main_container {
@@ -46,6 +48,8 @@ h1 {
     background-color: #121213;
     /* padding: 5px; */
     gap: 5px;
+    user-select: none;
+
 }
 
 .box {
@@ -61,14 +65,17 @@ h1 {
     text-align: center;
 
 
+
+
 }
 
 input {
-    user-select: none;
     border: none;
     outline: none;
     pointer-events: none;
     font-family: Arial, bold;
+    user-select: none;
+
 
 
 }
@@ -95,6 +102,8 @@ input {
     color: aliceblue;
     font-size: 30px;
     border-radius: 10%;
+    user-select: none;
+
 
 }
 
@@ -110,6 +119,8 @@ input {
     color: aliceblue;
     font-size: 30px;
     border-radius: 10%;
+    user-select: none;
+
 
 }
 

@@ -206,7 +206,6 @@ function checkWord() {
                 counts[curent_box.value]--;
                 share += '🟡';
 
-
             }
             else if (curent_box.style.backgroundColor != green) {
                 curent_box.style.backgroundColor = gray;
@@ -218,8 +217,6 @@ function checkWord() {
                 share += '⚫';
 
             }
-
-
 
         }
 
