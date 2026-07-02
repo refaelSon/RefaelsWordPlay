@@ -75,6 +75,7 @@ input {
     pointer-events: none;
     font-family: Arial, bold;
     user-select: none;
+    pointer-events: none;
 
 
 
