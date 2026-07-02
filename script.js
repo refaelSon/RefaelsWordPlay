@@ -301,8 +301,9 @@ function winSequ() {
 
 
 
-
+    document.getElementById("btnMenu").style.display = "flex";
     openModal();
+
 
 }
 

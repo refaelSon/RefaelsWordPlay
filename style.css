@@ -254,3 +254,17 @@ input {
         opacity: 0;
     }
 }
+
+
+#btnMenu {
+    display: none;
+    margin-right: 25%;
+    margin-bottom: 25%;
+    /* position: fixed; */
+    background-color: #9993a0;
+    width: 60px;
+    height: 40px;
+    z-index: 1000;
+
+
+}
