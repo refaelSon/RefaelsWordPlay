@@ -10,7 +10,7 @@ const game = document.getElementById("game_container");
 const snackBar = document.getElementById("snackbar");
 let share = '';
 
-
+//d
 
 init();
 console.log(document.getElementById("score"));
