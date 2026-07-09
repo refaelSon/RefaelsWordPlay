@@ -16,7 +16,7 @@ init();
 console.log(document.getElementById("score"));
 
 // const score;
-// const erors;
+// const erors;d
 
 
 
